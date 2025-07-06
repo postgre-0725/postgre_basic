@@ -70,7 +70,9 @@ values ('F003', 'Ayam Krispi Lalapan', 12000, 22),
 		('F005', 'Ayam Gepuk Bumbu Madura', 25000, 79);
 
 
+select * from products;
 
+select id, name, price, quantity from products;
 
 
 
