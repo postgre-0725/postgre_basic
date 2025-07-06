@@ -110,6 +110,12 @@ insert into products (id, name, price, quantity, category) values ('F999', 'Jus 
 
 delete from products where id = 'F999';
 
+select id as kode, name as nama, description as deskripsi from products;
+
+select id as "kode barang", name as "nama barang", description as "deskripsi barang" from products;
+
+select p.id as "kode barang", p.name as "nama barang", p.description as "deskripsi barang" from products as p;
+
 
 
 
