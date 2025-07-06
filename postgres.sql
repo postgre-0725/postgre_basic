@@ -106,7 +106,9 @@ update products set category = 'Makanan' where id in ('F002','F003','F004');
 
 update products set price = price + 2000 where id = 'F001';
 
+insert into products (id, name, price, quantity, category) values ('F999', 'Jus jeruk 100ML', 15000, 34, 'Minuman');
 
+delete from products where id = 'F999';
 
 
 
