@@ -19,10 +19,37 @@ drop database db_name;
 \dt;
 select * from pg_tables where schemaname='public';
 
+create table barang(
+	kode int,
+	name varchar(100),
+	harga int,
+	jumlah int
+)
 
+-- Describe table
+\d barang;
 
+-- Update table
+alter table barang 
+	add column deskripsi text;
+	
+alter table barang 
+	drop column deskripsi;
 
+alter table barang 
+	rename column name to nama;
 
+truncate barang;
+
+drop table barang;
+
+create table barang(
+	kode int not null,
+	name varchar(100) not null,
+	harga int not null default 1000,
+	jumlah int not null default 0,
+	waktu_dibuat TIMESTAMP not null default current_timestamp
+)
 
 
 
