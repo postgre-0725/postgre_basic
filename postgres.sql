@@ -87,6 +87,12 @@ create table products(
 alter table products
 	add primary key (id);
 
+select id, name, price, quantity from products where id = 'F004';
+
+select id, name, price, quantity from products where price > 15000;
+
+select id, name, price, quantity from products where quantity < 50;
+
 
 
 
