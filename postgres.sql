@@ -93,6 +93,19 @@ select id, name, price, quantity from products where price > 15000;
 
 select id, name, price, quantity from products where quantity < 50;
 
+create type PRODUCT_CATEGORY as enum ('Makanan', 'Minuman', 'Lain-lain');
+
+alter table products 
+	add column category PRODUCT_CATEGORY;
+
+update products set category = 'Makanan' where id = 'F001';
+
+update products set category = 'Makanan', description = 'Ayam Gepuk Jatinegara' where id = 'F005';
+
+update products set category = 'Makanan' where id in ('F002','F003','F004');
+
+update products set price = price + 2000 where id = 'F001';
+
 
 
 
