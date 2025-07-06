@@ -74,8 +74,18 @@ select * from products;
 
 select id, name, price, quantity from products;
 
+create table products(
+	id varchar(10) not null,
+	name varchar(100) not null,
+	description text,
+	price int not null,
+	quantity int not null default 0,
+	created_at timestamp not null default current_timestamp,
+	primary key (id)
+)
 
-
+alter table products
+	add primary key (id);
 
 
 
