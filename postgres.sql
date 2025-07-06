@@ -116,6 +116,43 @@ select id as "kode barang", name as "nama barang", description as "deskripsi bar
 
 select p.id as "kode barang", p.name as "nama barang", p.description as "deskripsi barang" from products as p;
 
+insert into products (id, name, price, quantity, category) 
+values ('F006', 'Jus Jeruk Dingin', 7000, 121, 'Minuman'),
+		('F007', 'Teh Tawar Gelas Besar', 4000, 5, 'Minuman'),
+		('F008', 'Gorengan anget',1000, 0, 'Lain-lain');
+
+select * from products where price > 17000;
+
+select * from products where price >= 17000;
+
+select * from products where category != 'Makanan';
+
+select * from products where price <= 17000 and category != 'Makanan';
+
+select * from products where price <= 17000 or category != 'Makanan';
+
+select * from products where (price <= 17000 or category = 'Makanan') and quantity > 5;
+
+select * from products where category = 'Makanan' or (price >= 17000 and quantity > 5);
+
+select * from products where name like '%a';
+
+select * from products where name like 'k%';
+
+select * from products where name like '%Ayam%';
+
+select * from products where name ilike '%ayam%';
+
+select * from products where description is null;
+
+select * from products where price between 10000 and 20000;
+
+select * from products where price not between 10000 and 20000;
+
+select * from products where category in ('Makanan', 'Minuman');
+
+select * from products where category not in ('Makanan', 'Minuman');
+
 
 
 
