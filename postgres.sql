@@ -51,6 +51,40 @@ create table barang(
 	waktu_dibuat TIMESTAMP not null default current_timestamp
 )
 
+create table products(
+	id varchar(10) not null,
+	name varchar(100) not null,
+	description text,
+	price int not null,
+	quantity int not null default 0,
+	created_at timestamp not null default current_timestamp
+)
+
+insert into products (id, name, price, quantity) values ('F001', 'Ayam Grepek Sambal Matah', 15000, 34);
+
+insert into products (id, name, description, price, quantity) values ('F002', 'Ayam Bakar Sambal Ijo', 'Ayam Bakar Lembut + sambal', 18000, 58);
+
+insert into products (id, name, price, quantity) 
+values ('F003', 'Ayam Krispi Lalapan', 12000, 22),
+		('F004', 'Ayam Goreng Sambal Teri', 21000, 9),
+		('F005', 'Ayam Gepuk Bumbu Madura', 25000, 79);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
