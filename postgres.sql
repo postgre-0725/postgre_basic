@@ -191,6 +191,18 @@ select * from admin;
 
 select currval ('admin_id_seq'); --see last value id increment
 
+create sequence sequence_contoh; --create sequence (auto increment in postgres)
+
+select nextval ('sequence_contoh'); --call sequence, auto increment
+
+select currval ('sequence_contoh');
+
+/ds --see list sequences
+
+/d sequence_contoh; -- see detail sequence
+
+
+
 
 
 
