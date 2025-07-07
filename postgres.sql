@@ -175,7 +175,21 @@ select cos(10), sin(10), tan(10);
 
 select id, name, power(quantity, 2) as quantity_power_2 from products;
 
+create table admin(
+	id serial not null,
+	first_name varchar(100) not null,
+	last_name varchar(100),
+	primary key (id)
+)
 
+insert into admin (first_name, last_name)
+values ('M.','Hasan'),
+		('Musa',''),
+		('Sans','Tuy');
+
+select * from admin;
+
+select currval ('admin_id_seq'); --see last value id increment
 
 
 
