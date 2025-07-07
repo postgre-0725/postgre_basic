@@ -163,7 +163,17 @@ select * from products where price > 5000 order by price asc limit 2 offset 2; -
 
 select distinct category from products; -- menghilangkan data duplikat
 
+select 100 + 100 as result;
 
+select id, name, price / 1000 as result_in_k from products;
+
+select pi();
+
+select power(7,2);
+
+select cos(10), sin(10), tan(10);
+
+select id, name, power(quantity, 2) as quantity_power_2 from products;
 
 
 
