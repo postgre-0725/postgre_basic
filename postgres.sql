@@ -153,6 +153,16 @@ select * from products where category in ('Makanan', 'Minuman');
 
 select * from products where category not in ('Makanan', 'Minuman');
 
+select * from products order by price asc;
+
+select * from products order by name desc;
+
+select * from products where price > 5000 order by price asc limit 2;
+
+select * from products where price > 5000 order by price asc limit 2 offset 2; -- limit 2 skip 2
+
+select distinct category from products; -- menghilangkan data duplikat
+
 
 
 
