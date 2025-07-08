@@ -205,6 +205,33 @@ select id, lower(name) ,length(name), lower(description) from products;
 
 select id, extract (year from created_at), extract(month from created_at) from products;
 
+select id, 
+		category, 
+		case category 
+			when 'Makanan' then 'Lapar'
+			when 'Minuman' then 'Haus'
+			else 'Cemilan'
+		end as category_case
+from products;
+
+select id,
+		name,
+		price,
+		case
+		when price <= 10000 then 'Murah juga:)'
+		when price <= 20000 then 'Mahal yaa:v'
+		else 'Mahal amat euy:('
+		end as Mahal_pora
+from products;
+
+select id,
+		name,
+		case
+			when description is null then 'No desc detected'
+			else description
+		end as descriptions
+from products;
+		
 
 
 
