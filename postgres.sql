@@ -203,6 +203,8 @@ select currval ('sequence_contoh');
 
 select id, lower(name) ,length(name), lower(description) from products;
 
+select id, extract (year from created_at), extract(month from created_at) from products;
+
 
 
 
