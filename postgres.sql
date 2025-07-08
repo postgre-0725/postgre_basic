@@ -240,6 +240,29 @@ select max(price) from products;
 
 select min(price) from products;
 
+select category, 
+		count(id) as total_product,
+		avg(price) as rata2_harga,
+		max(price) as harga_termahal,
+		min(price) as harga_termurah
+from products 
+group by category; 
+
+select category, 
+		count(id) as total_product
+from products 
+group by category
+having count(id) > 1; 
+
+select category, 
+		count(id) as total_product,
+		avg(price) as rata2_harga,
+		max(price) as harga_termahal,
+		min(price) as harga_termurah
+from products 
+group by category
+having avg(price) > 6000; 
+
 
 
 
