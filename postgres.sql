@@ -201,6 +201,8 @@ select currval ('sequence_contoh');
 
 /d sequence_contoh; -- see detail sequence
 
+select id, lower(name) ,length(name), lower(description) from products;
+
 
 
 
