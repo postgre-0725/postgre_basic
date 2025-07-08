@@ -232,6 +232,13 @@ select id,
 		end as descriptions
 from products;
 		
+select count(id) from products;
+
+select avg(price) from products;
+
+select max(price) from products;
+
+select min(price) from products;
 
 
 
