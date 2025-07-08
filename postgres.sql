@@ -263,6 +263,26 @@ from products
 group by category
 having avg(price) > 6000; 
 
+create table customers (
+	id serial not null,
+	email varchar(100) not null,
+	first_name varchar(100) not null,
+	last_name varchar(100),
+	primary key (id),
+	constraint unique_email unique (email)
+)
+
+insert into customers (email, first_name, last_name) values ('mhasan@qa.test','M.','Hasan'); -- Sukses add data
+
+insert into customers (email, first_name, last_name) values ('mhasan@qa.test','Muh.','Hasanain'); -- Gagal add data, email harus unix
+
+alter table customers drop constraint unique_email;
+
+alter table customers add constraint unique_email unique (email);
+
+alter table products add constraint check_price check (price >= 500);
+
+insert into products (id, name, description, price, quantity) values ('F012', 'Permen Lolita', 'Lolita jambu', 100, 9); -- gagal karena price >= 500
 
 
 
