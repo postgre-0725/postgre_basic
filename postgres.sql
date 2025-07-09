@@ -308,7 +308,30 @@ select * from sellers where id = 1 or name = 'Ayu Makmur'; -- search tidak cepat
 
 create index sellers_id_and_name_index on sellers (id, name);
 
+select * from products where to_tsvector(name) @@ to_tsquery('sambal') -- search tanpa index
 
+-- search with index by full text search
+select cfgname from pg_ts_config; -- see available language
+
+create index products_name_search on products using gin (to_tsvector('indonesian',name));
+
+create index products_description_search on products using gin (to_tsvector('indonesian',description));
+
+select * from products where name @@ to_tsquery('sambal') 
+
+select * from products where description @@ to_tsquery('ayam') 
+
+select * from products where description @@ to_tsquery('ayam bakar') -- error krn hanya bisa single keyword
+
+select * from products where category @@ to_tsquery('makanan') -- error krn belum add full text search
+
+select * from products where name @@ to_tsquery('ayam & sambal') -- with AND
+
+select * from products where name @@ to_tsquery('ayam | sambal') -- with OR
+
+select * from products where name @@ to_tsquery('!ayam') -- with NOT
+
+select * from products where name @@ to_tsquery('''ayam bakar''') -- untuk semua data (ayam bakar sambal ijo)
 
 
 
