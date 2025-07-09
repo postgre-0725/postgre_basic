@@ -284,6 +284,39 @@ alter table products add constraint check_price check (price >= 500);
 
 insert into products (id, name, description, price, quantity) values ('F012', 'Permen Lolita', 'Lolita jambu', 100, 9); -- gagal karena price >= 500
 
+-- primary key & constraint unique otomatis membuat index
+create table sellers (
+	id serial not null,
+	name varchar(100) not null,
+	email varchar(100) not null,
+	primary key (id),
+	constraint email_unique unique (email)
+);
+
+insert into sellers (name, email)
+values ('Berkah Jaya','berkahjaya@mail.com'),
+		('Ayu Makmur','ayumakmur@mail.com'),
+		('Budi Sentoss','budisentosa@mail.com');
+	
+select * from sellers where id = 1; -- search cepat krn menggunakan index di PK	
+
+select * from sellers where email = 'budisentosa@mail.com'; -- search cepat krn menggunakan index constraint unique
+	
+select * from sellers where name = 'Berkah Jaya'; -- search tidak cepat krn tidak menggunakan index di name
+
+select * from sellers where id = 1 or name = 'Ayu Makmur'; -- search tidak cepat krn tidak menggunakan index di seluruh kolom
+
+create index sellers_id_and_name_index on sellers (id, name);
+
+
+
+
+
+
+
+
+
+
 
 
 
