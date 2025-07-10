@@ -358,6 +358,28 @@ alter table wishlist -- to update behavior fk from default restrict (ditolak)
 add constraint fk_wishlist_product foreign key (id_product) references products(id)
 on delete cascade on update cascade;
 
+select * from wishlist join products on wishlist.id_product = products.id;
+
+select products.id, products.name, products.description, wishlist.description, products.quantity, products.price 
+from wishlist join products on wishlist.id_product = products.id;
+
+select p.id, p.name, p.description, w.description, p.quantity, p.price 
+from wishlist as w join products as p on w.id_product = p.id;
+
+alter table wishlist add column id_customer int;
+
+alter table wishlist
+add constraint fk_wishlist_customer foreign key (id_customer) references customers(id);
+
+update wishlist set id_customer = 1 where id in (5,7);
+
+update wishlist set id_customer = 3 where id = 6;
+
+select p.id, p.name, p.description, w.description, p.quantity, p.price, c.first_name, c.email 
+from wishlist as w join products as p on w.id_product = p.id
+
+
+
 
 
 
