@@ -333,10 +333,30 @@ select * from products where name @@ to_tsquery('!ayam') -- with NOT
 
 select * from products where name @@ to_tsquery('''ayam bakar''') -- untuk semua data (ayam bakar sambal ijo)
 
+create table wishlist(
+	id serial not null,
+	id_product varchar(10) not null,
+	description text,
+	primary key(id),
+	constraint fk_wishlist_product foreign key (id_product) references products(id)
+)
 
+insert into wishlist (id_product, description) values ('id_salah', 'Description salah'); -- error krn tidak ada id product tsb di table relasi
 
+insert into wishlist (id_product, description) -- success id available in product
+values ('F001', 'Geprek idaman'),
+		('F002','Ayam bakal joss'),
+		('F003','Ayam krispi lezatoz');
+	
+select * from wishlist;	
 
+update wishlist set id_product = 'id_salah' where id '5'; -- error juga krn tidak dapat update, id not available in products
 
+delete from products where id = 'F001'; -- error juga krn tidak dapat delete product yg sudah reference ke table lain
+
+alter table wishlist -- to update behavior fk from default restrict (ditolak)
+add constraint fk_wishlist_product foreign key (id_product) references products(id)
+on delete cascade on update cascade;
 
 
 
