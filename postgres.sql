@@ -472,6 +472,12 @@ select * from categories right join products on products.id_category = categorie
 
 select * from categories full join products on products.id_category = categories.id;
 
+select avg(price) from products;
+
+select * from products where price > (select avg(price) from products);
+
+select max(price) from (select products.price as price from categories join products on products.id_category = categories.id) as example;
+
 
 
 
