@@ -460,6 +460,18 @@ select * from orders
 join order_detail on order_detail.id_order = orders.id
 join products on order_detail.id_product = products.id;
 
+insert into categories (id,name) values ('C004','Buah'),('C005','Sayur');
+
+insert into products (id, name, price, quantity) values ('F010','Salak pondok','17500','182'),('F011','Apel fuji','53000','39'),('F012','Brokoli','2300','9');
+
+select * from categories inner join products on products.id_category = categories.id;
+
+select * from categories left join products on products.id_category = categories.id;
+
+select * from categories right join products on products.id_category = categories.id;
+
+select * from categories full join products on products.id_category = categories.id;
+
 
 
 
