@@ -478,6 +478,34 @@ select * from products where price > (select avg(price) from products);
 
 select max(price) from (select products.price as price from categories join products on products.id_category = categories.id) as example;
 
+create table guestbooks (
+	id serial not null,
+	email varchar(100) not null,
+	title varchar(100) not null,
+	content text,
+	primary key (id)
+)
+
+insert into guestbooks (email, title, content)
+values ('mhasan@qa.test','from hasan','isi hasan'),
+		('mhasan@qa.test','from hasan 2','isi hasan 2'),
+		('musa@mail.com','from musa','isi musa'),
+		('another@mail.com','from another','isi another'),
+		('other@mail.com','from other','isi other');
+
+select * from guestbooks;	
+
+select distinct email from customers union select distinct email from guestbooks;
+
+select distinct email from customers union all select distinct email from guestbooks;
+
+select email from customers union all select email from guestbooks;
+
+select email, count(email) from (select email from customers union all select email from guestbooks) as contoh group by email;
+
+select email from customers intersect select email from guestbooks;
+
+select email from customers except select email from guestbooks;
 
 
 
