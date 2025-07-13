@@ -414,6 +414,51 @@ alter table products drop column category;
 
 select * from products join categories on products.id_category = categories.id;
 
+create table orders(
+	id serial not null,
+	total int not null,
+	order_date timestamp not null default current_timestamp,
+	primary key (id)
+)
+
+create table order_detail(
+	id_product varchar(10) not null,
+	id_order int not null,
+	price int not null,
+	quantity int not null,
+	primary key(id_product,id_order)
+)
+
+alter table order_detail
+add constraint fk_order_detail_products foreign key (id_product) references products(id);
+
+alter table order_detail
+add constraint fk_order_detail_order foreign key (id_order) references orders(id);
+
+insert into orders(total) values (1),(1),(1);
+
+select * from orders;
+
+insert into order_detail (id_product, id_order, price, quantity)
+	values ('F001', 1, 1000, 2),
+			('F002', 1, 1500, 2),
+			('F003', 1, 1500, 2);
+
+insert into order_detail (id_product, id_order, price, quantity)
+	values ('F004', 2, 2000, 2),
+			('F005', 2, 3500, 2),
+			('F006', 2, 5000, 2);
+
+insert into order_detail (id_product, id_order, price, quantity)
+	values ('F001', 3, 1000, 3),
+			('F004', 3, 2000, 6),
+			('F005', 3, 3500, 1);
+
+select * from order_detail;		
+
+select * from orders
+join order_detail on order_detail.id_order = orders.id
+join products on order_detail.id_product = products.id;
 
 
 
