@@ -376,7 +376,20 @@ update wishlist set id_customer = 1 where id in (5,7);
 update wishlist set id_customer = 3 where id = 6;
 
 select p.id, p.name, p.description, w.description, p.quantity, p.price, c.first_name, c.email 
-from wishlist as w join products as p on w.id_product = p.id
+from wishlist as w join products as p on w.id_product = p.id;
+
+create table wallet (
+	id serial not null,
+	id_customer int not null,
+	balance int not null default 0,
+	primary key (id),
+	constraint wallet_customer_unique unique (id_customer),
+	constraint fk_wallet_customer foreign key (id_customer) references customers(id)
+)
+
+insert into wallet (id_customer, balance) values (1,5000000), (3, 2500000);
+
+select * from wallet join customers on wallet.id_customer = customers.id;
 
 
 
