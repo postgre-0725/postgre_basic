@@ -556,6 +556,28 @@ select * from products where id = 'F002' for update; -- run transaction in anoth
 
 rollback;
 
+-- see schema current
+select current_schema();
+show search_path;
+
+create schema example;
+
+set search_path example;
+
+drop schema example;
+
+select * from public.products;
+
+create table example.products(
+	id serial not null,
+	name varchar(100) not null,
+	primary key(id)
+);
+
+insert into example.products (name) values ('products example 01');
+
+select * from example.products;
+
 
 
 
