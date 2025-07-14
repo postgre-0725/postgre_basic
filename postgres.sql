@@ -529,6 +529,32 @@ select * from guestbooks;
 
 rollback;
 
+start transaction;
+
+update products set description = 'Ayam geprek joss' where id = 'F001';
+
+select * from products order by id;
+
+commit;
+
+update products set quantity = 50 where id = 'F001'; -- run in other place, baru running ketika diatas commit
+
+start transaction;
+
+select * from products where id = 'F001' for update;
+
+rollback;
+
+update products set price = 20000 where id = 'F001'; -- run in other place, baru running ketika diatas rollback
+
+-- Deadlock
+start transaction;
+
+select * from products where id = 'F001' for update; -- run again in another place, deadlock
+
+select * from products where id = 'F002' for update; -- run transaction in another place
+
+rollback;
 
 
 
