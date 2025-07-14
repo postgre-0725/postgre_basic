@@ -507,7 +507,27 @@ select email from customers intersect select email from guestbooks;
 
 select email from customers except select email from guestbooks;
 
+start transaction;
 
+insert into guestbooks (email, title, content) values ('trans@qa.test','trans1','trans 1');
+
+insert into guestbooks (email, title, content) values ('trans2@qa.test','trans2','trans 2');
+
+insert into guestbooks (email, title, content) values ('trans2@qa.test','trans3','trans 3');
+
+select * from guestbooks;
+
+commit;
+
+start transaction;
+
+insert into guestbooks (email, title, content) values ('trans4@qa.test','trans4','trans 4');
+
+insert into guestbooks (email, title, content) values ('trans5@qa.test','trans4','trans 5');
+
+select * from guestbooks;
+
+rollback;
 
 
 
