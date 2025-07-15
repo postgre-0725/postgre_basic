@@ -592,6 +592,8 @@ grant usage, select, update on guestbooks_id_seq to hasan;
 
 grant insert, update, select on customers to sans;
 
+pg_dump --host=localhost --port=5432 --dbname=db_postgres --username=postgres --format=plain --file=D:\QA\PZN\PostgreSQL\postgre_basic\db_postgres.sql
+
 
 
 
