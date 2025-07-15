@@ -578,6 +578,20 @@ insert into example.products (name) values ('products example 01');
 
 select * from example.products;
 
+create role hasan;
+
+create role sans login password 'password';
+
+drop role sans;
+
+alter role hasan login password 'password';
+
+grant insert, update, select on all tables in schema public to hasan;
+
+grant usage, select, update on guestbooks_id_seq to hasan;
+
+grant insert, update, select on customers to sans;
+
 
 
 
